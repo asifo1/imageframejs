@@ -18,8 +18,9 @@ const render = ()=>{
         img.style.position = "absolute"
         img.style.top = "0" 
         img.style.left = `${imgPositionTop}px`
-        img.setAttribute("class","image")
+        img.setAttribute("class","image top")
         imgPositionTop += imgSize
+        
         frame.appendChild(img)
     }
 
@@ -33,7 +34,7 @@ const render = ()=>{
         img3.style.position = "absolute"
         img3.style.right = "0" 
         img3.style.top = `${imgPositionRight}px`
-        img3.setAttribute("class","image")
+        img3.setAttribute("class","image right")
         imgPositionRight += imgSize
         frame.appendChild(img3)
     }
@@ -47,7 +48,7 @@ const render = ()=>{
         img2.style.position = "absolute"
         img2.style.bottom = "0" 
         img2.style.left = `${imgPositionBottom}px`
-        img2.setAttribute("class","image")
+        img2.setAttribute("class","image bottom")
         imgPositionBottom += imgSize
         frame.appendChild(img2)
     }
@@ -61,7 +62,7 @@ const render = ()=>{
         img3.style.position = "absolute"
         img3.style.left = "0" 
         img3.style.top = `${imgPositionLeft}px`
-        img3.setAttribute("class","image")
+        img3.setAttribute("class","image left")
         imgPositionLeft += imgSize
         frame.appendChild(img3)
     }
@@ -76,7 +77,7 @@ const removeImages = () =>{
 
 
 
-window.onresize = () => {
+window.addEventListener('resize', () => {
     removeImages()
     content.style.height = "auto"
     if(document.documentElement.clientWidth<780){
@@ -86,7 +87,7 @@ window.onresize = () => {
         limit = 10
     }
     render()
-}
+})
 
 render()
 
