@@ -37,8 +37,8 @@ window.addEventListener('resize',()=>{
 
 const transfrom = (id,array) =>{
     let tempIndex
-    array[id].style.transition = "left 0.6s ease-out, top 0.6s ease-out, right 0.6s ease-out"
-    array[id-1].style.transition = "left 0.6s ease-out, top 0.6s ease-out, right 0.6s ease-out"
+    array[id].style.transition = "left 0.8s ease-out, top 0.8s ease-out, right 0.8s ease-out, bottom 0.8s ease-out"
+    array[id-1].style.transition = "left 0.8s ease-out, top 0.8s ease-out, right 0.8s ease-out, bottom 0.8s ease-out"
 
     
     tempTop = array[id].style.top
@@ -90,7 +90,7 @@ setInterval(()=>{
     }while(previous_random==rand || previous_random+1 ==rand || previous_random-1==rand)
     previous_random = rand
     transfrom(rand,imageArray)
-},1000)
+},3000)
 
 getImages()
 
