@@ -1,0 +1,14 @@
+I found two bugs but unfortunately I don't know how to solve it.
+
+Bug 1:
+    Re-rendering is not happening when someone clicks on maximize button.
+
+Bug 2:
+    Swapping between Bottom-left and above the Bottom-left is not showing transition effect.
+    Swapping between Bottom-right and above the Bottom-right is not showing transition effect.
+
+    1 2 3 4
+    0     5 
+    9 8 7 6
+    
+    Effect problem in swap(0,9) & swap(5,6)
