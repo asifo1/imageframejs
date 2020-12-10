@@ -1,5 +1,5 @@
 var imageArray = []
-var rightImageArray = []
+var previous_random = 0
 const getImages = ()=>{
     imageArray = []
     let bottomArray=[],leftArray = []
@@ -8,9 +8,8 @@ const getImages = ()=>{
     })
 
     document.querySelectorAll(".right").forEach((e)=>{
-        rightImageArray.push(e)
+        imageArray.push(e)
     })
-    imageArray = [...imageArray, ...rightImageArray]
 
     document.querySelectorAll(".bottom").forEach((e)=>{
         bottomArray.push(e)
@@ -24,27 +23,58 @@ const getImages = ()=>{
 
 }
 
+const random = (min,max) =>{
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 
 window.addEventListener('resize',()=>{
     getImages()
 })
 
-getImages()
+
 
 
 const transfrom = (id,array) =>{
     let tempIndex
-    array[id].style.transition = "left 0.4s ease-out, top 0.4s ease-out"
-    array[id-1].style.transition = "left 0.4s ease-out, top 0.4s ease-out"
-    array[id-1].style.zIndex = "1"
+    array[id].style.transition = "left 0.6s ease-out, top 0.6s ease-out, right 0.6s ease-out"
+    array[id-1].style.transition = "left 0.6s ease-out, top 0.6s ease-out, right 0.6s ease-out"
+
+    
     tempTop = array[id].style.top
     array[id].style.top = array[id-1].style.top 
     array[id-1].style.top = tempTop
+
+    if(random(0,1)==1){
+        array[id].style.zIndex = "1"
+        array[id].style.zIndex = "0"
+    }
+    else{
+        array[id].style.zIndex = "0"
+        array[id].style.zIndex = "1"
+    }
     
-    tempLeft = array[id].style.left
-    array[id].style.left = array[id-1].style.left 
-    array[id-1].style.left = tempLeft
-    
+    if(array[id-1].style.right && !(array[id-1].style.right && array[id].style.right)){
+  
+            tempLeft = array[id].style.left
+            array[id].style.left = ""
+            array[id].style.right =  array[id-1].style.right
+            array[id-1].style.left = tempLeft
+            array[id-1].style.right = ""
+        
+    }
+    else if(array[id].style.right && !(array[id-1].style.right && array[id].style.right)){
+        tempLeft = array[id-1].style.left
+        array[id-1].style.left = ""
+        array[id-1].style.right =  array[id].style.right
+        array[id].style.left = tempLeft
+        array[id].style.right = ""
+    }
+    else{
+        tempLeft = array[id].style.left
+        array[id].style.left = array[id-1].style.left 
+        array[id-1].style.left = tempLeft
+    }
     tempIndex = array[id]
     array[id] = array[id-1]
     array[id-1] = tempIndex
@@ -53,6 +83,16 @@ const transfrom = (id,array) =>{
 
 
 
-// for(i=1;i<imageArray.length;i++){
-//     transfrom(i,imageArray)
-// }
+setInterval(()=>{
+    let rand
+    do{
+        rand = random(1,imageArray.length)
+    }while(previous_random==rand || previous_random+1 ==rand || previous_random-1==rand)
+    previous_random = rand
+    transfrom(rand,imageArray)
+},1000)
+
+getImages()
+
+// transfrom(13,imageArray)
+// transfrom(17,imageArray)
