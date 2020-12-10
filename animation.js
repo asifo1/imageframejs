@@ -86,7 +86,7 @@ const transfrom = (id,array) =>{
 setInterval(()=>{
     let rand
     do{
-        rand = random(1,imageArray.length)
+        rand = random(1,imageArray.length-1)
     }while(previous_random==rand || previous_random+1 ==rand || previous_random-1==rand)
     previous_random = rand
     transfrom(rand,imageArray)
