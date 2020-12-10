@@ -16,5 +16,7 @@
 .content {
   color: #fff;
   padding: 40px 50px;
+  min-height: 9vw;
+  height: 100%;
   box-shadow: 0 0 30px #000 inset;
 }
