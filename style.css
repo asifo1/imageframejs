@@ -16,7 +16,10 @@
 .content {
   color: #fff;
   padding: 40px 50px;
-  min-height: 9vw;
+  min-height: 8.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: ;
   height: 100%;
   box-shadow: 0 0 30px #000 inset;
 }
