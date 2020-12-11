@@ -2,8 +2,9 @@ const content = document.querySelector(".content")
 const frame = document.querySelector(".frame")
 var windowSize = document.documentElement.clientWidth
 var limit = 10
+var imgSize = (document.documentElement.clientWidth/100)*9
 const render = ()=>{
-    let imgSize = (document.documentElement.clientWidth/100)*9
+    imgSize = (document.documentElement.clientWidth/100)*9
     let imgPositionTop = 0, imgPositionBottom = 0, imgPositionLeft = imgSize, imgPositionRight = imgSize
     let row = Math.ceil(content.clientHeight/imgSize)
     content.style.width = `${imgSize*(limit-2)}px`
