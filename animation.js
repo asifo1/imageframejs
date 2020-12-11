@@ -39,8 +39,8 @@ const transfrom = (id,array) =>{
     let tempIndex,len = array.length
 
     if(id==0){
-        array[id].style.transition = "top 0.8s ease-out"
-        array[len-1].style.transition = "top 0.8s ease-out"
+        array[id].style.transition = "top 0.6s ease-out"
+        array[len-1].style.transition = "top 0.6s ease-out"
         
         tempTop = array[id].style.top
         array[id].style.top = array[len-1].style.top 
@@ -60,8 +60,8 @@ const transfrom = (id,array) =>{
         
     }
     else{
-        array[id].style.transition = "left 0.8s ease-out, top 0.8s ease-out"
-        array[id-1].style.transition = "left 0.8s ease-out, top 0.8s ease-out"
+        array[id].style.transition = "left 0.6s ease-out, top 0.6s ease-out"
+        array[id-1].style.transition = "left 0.6s ease-out, top 0.6s ease-out"
 
         
         tempTop = array[id].style.top
@@ -113,7 +113,7 @@ setInterval(()=>{
     }while(previous_random==rand || previous_random+1 ==rand || previous_random-1==rand)
     previous_random = rand
     transfrom(rand,imageArray)
-},3000)
+},2200)
 
 getImages()
 

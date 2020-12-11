@@ -78,8 +78,8 @@ const removeImages = () =>{
 
 
 window.addEventListener('resize', () => {
-    removeImages()
     content.style.height = "auto"
+    removeImages()
     if(document.documentElement.clientWidth<780){
         limit = 8
     }
