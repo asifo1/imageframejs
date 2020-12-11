@@ -36,49 +36,72 @@ window.addEventListener('resize',()=>{
 
 
 const transfrom = (id,array) =>{
-    let tempIndex
-    array[id].style.transition = "left 0.8s ease-out, top 0.8s ease-out, right 0.8s ease-out, bottom 0.8s ease-out"
-    array[id-1].style.transition = "left 0.8s ease-out, top 0.8s ease-out, right 0.8s ease-out, bottom 0.8s ease-out"
+    let tempIndex,len = array.length
 
-    
-    tempTop = array[id].style.top
-    array[id].style.top = array[id-1].style.top 
-    array[id-1].style.top = tempTop
+    if(id==0){
+        array[id].style.transition = "top 0.8s ease-out"
+        array[len-1].style.transition = "top 0.8s ease-out"
+        
+        tempTop = array[id].style.top
+        array[id].style.top = array[len-1].style.top 
+        array[len-1].style.top = tempTop
 
-    if(random(0,1)==1){
-        array[id].style.zIndex = "1"
-        array[id].style.zIndex = "0"
-    }
-    else{
-        array[id].style.zIndex = "0"
-        array[id].style.zIndex = "1"
-    }
-    
-    if(array[id-1].style.right && !(array[id-1].style.right && array[id].style.right)){
-  
-            tempLeft = array[id].style.left
-            array[id].style.left = ""
-            array[id].style.right =  array[id-1].style.right
-            array[id-1].style.left = tempLeft
-            array[id-1].style.right = ""
+        if(random(0,1)==1){
+            array[id].style.zIndex = "1"
+            array[len-1].style.zIndex = "0"
+        }
+        else{
+            array[id].style.zIndex = "0"
+            array[len-1].style.zIndex = "1"
+        }
+        tempIndex = array[id]
+        array[id] = array[len-1]
+        array[len-1] = tempIndex
         
     }
-    else if(array[id].style.right && !(array[id-1].style.right && array[id].style.right)){
-        tempLeft = array[id-1].style.left
-        array[id-1].style.left = ""
-        array[id-1].style.right =  array[id].style.right
-        array[id].style.left = tempLeft
-        array[id].style.right = ""
-    }
     else{
-        tempLeft = array[id].style.left
-        array[id].style.left = array[id-1].style.left 
-        array[id-1].style.left = tempLeft
+        array[id].style.transition = "left 0.8s ease-out, top 0.8s ease-out"
+        array[id-1].style.transition = "left 0.8s ease-out, top 0.8s ease-out"
+
+        
+        tempTop = array[id].style.top
+        array[id].style.top = array[id-1].style.top 
+        array[id-1].style.top = tempTop
+
+        if(random(0,1)==1){
+            array[id].style.zIndex = "1"
+            array[id-1].style.zIndex = "0"
+        }
+        else{
+            array[id].style.zIndex = "0"
+            array[id-1].style.zIndex = "1"
+        }
+        
+        if(array[id-1].style.right && !(array[id-1].style.right && array[id].style.right)){
+    
+                tempLeft = array[id].style.left
+                array[id].style.left = ""
+                array[id].style.right =  array[id-1].style.right
+                array[id-1].style.left = tempLeft
+                array[id-1].style.right = ""
+            
+        }
+        else if(array[id].style.right && !(array[id-1].style.right && array[id].style.right)){
+            tempLeft = array[id-1].style.left
+            array[id-1].style.left = ""
+            array[id-1].style.right =  array[id].style.right
+            array[id].style.left = tempLeft
+            array[id].style.right = ""
+        }
+        else{
+            tempLeft = array[id].style.left
+            array[id].style.left = array[id-1].style.left 
+            array[id-1].style.left = tempLeft
+        }
+        tempIndex = array[id]
+        array[id] = array[id-1]
+        array[id-1] = tempIndex
     }
-    tempIndex = array[id]
-    array[id] = array[id-1]
-    array[id-1] = tempIndex
-    return id
 }
 
 
@@ -86,7 +109,7 @@ const transfrom = (id,array) =>{
 setInterval(()=>{
     let rand
     do{
-        rand = random(1,imageArray.length-1)
+        rand = random(0,imageArray.length-1)
     }while(previous_random==rand || previous_random+1 ==rand || previous_random-1==rand)
     previous_random = rand
     transfrom(rand,imageArray)
@@ -94,5 +117,4 @@ setInterval(()=>{
 
 getImages()
 
-// transfrom(13,imageArray)
 // transfrom(17,imageArray)

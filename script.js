@@ -46,7 +46,7 @@ const render = ()=>{
         img2.style.width = `${imgSize}px`
         img2.style.height = `${imgSize}px`
         img2.style.position = "absolute"
-        img2.style.bottom = "0" 
+        img2.style.top = `${(imgSize*row)+imgSize}px`
         img2.style.left = `${imgPositionBottom}px`
         img2.setAttribute("class","image bottom")
         imgPositionBottom += imgSize
